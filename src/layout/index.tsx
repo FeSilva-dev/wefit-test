@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom"
+import * as S from './style'
+import { Header } from "../components/Header"
 
 export function Layout() {
   return (
-    <>
-      <header><h1>Header</h1></header>
+    <S.Container>
+      <Header />
       <main>                
-          <Outlet />
+        <Outlet />
       </main>
-    </>
+    </S.Container>
   )
 }

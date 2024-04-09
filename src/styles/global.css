@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+#root {
+  height: 100vh;
+  background-color: #2F2E41;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
