@@ -1,3 +1,4 @@
+import { SearchInput } from '../components/Search'
 import { useHome } from '../hooks/useHome'
 import * as S from './styles'
 
@@ -6,7 +7,8 @@ export function Home(){
 
   return (
     <section>
-      <input type="text" placeholder="Buscar filme pelo nome" />
+      <SearchInput />
+
       <S.ListWrapper>
         {!isLoading && data && data?.map((item) => (
           <S.Card>

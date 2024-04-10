@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ListWrapper = styled.div`
-  margin-top: 24px;
+  margin: 24px 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
