@@ -9,6 +9,7 @@ interface ICartStore {
   products: IProduct[]
   addProductToCart: (product: IMovie) => void
   removeProductFromCart: (id: number) => void
+  updateProductQuantity: (id: number, quantity: number) => void
 }
 
 export const useCartStore = create<ICartStore>(
@@ -31,6 +32,21 @@ export const useCartStore = create<ICartStore>(
       const remainingProducts = allProducts.filter(item => item.id !== id)
 
       set({ products: remainingProducts })
-    }
+    },
+    updateProductQuantity: (id: number, quantity: number) => {
+      const allProducts = get().products
+      let updatedProducts = []
+
+      if (quantity === 0) {
+        updatedProducts = allProducts.filter(
+          (item) => item.id !== id
+        )
+      } else {
+        updatedProducts = allProducts.map((item) => 
+          item.id === id ? ({ ...item, quantity }) : item
+        )
+      }
+      set({ products: updatedProducts })
+    },
   }),
 )
