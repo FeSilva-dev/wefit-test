@@ -1,14 +1,16 @@
 import { ShoppingBasket } from 'lucide-react'
 import * as S from './styles'
+import { useNavigate } from 'react-router-dom'
 
 export function Header(){
+  const navigate = useNavigate()
   return (
     <S.Header>
-      <button>
+      <button onClick={() => navigate('/')}>
         <S.Logo>WeMovies</S.Logo>
       </button>
 
-      <S.CartWrapper>
+      <S.CartWrapper onClick={() => navigate('/cart')}>
         <S.CartInfo>
           <p>Meu Carrinho</p>
           <p>0 itens</p>
