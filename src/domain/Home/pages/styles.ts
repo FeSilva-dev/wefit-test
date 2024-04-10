@@ -46,20 +46,14 @@ export const Card = styled.div`
     font-weight: 700;
     text-align: center;
   }
+`
 
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #009EDD;
-    gap: 12px;
-    border-radius: 4px;
-    padding: 9px;
-    color: white;
-    font-weight: 700;
+export const AddToCartIcon = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
 
-    &:hover {
-      filter: brightness(0.9);
-    }
+  > svg {
+    width: 14px;
   }
 `

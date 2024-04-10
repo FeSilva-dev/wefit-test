@@ -1,46 +1,55 @@
-import { Trash } from 'lucide-react'
 import * as S from './styles'
-import { Button } from '../../../components/Button'
+import { useCartStore } from '../../../stores/cart'
+import { formatMoney } from '../../../utils'
+import { EmptyState } from '../../Home/components/EmptyState'
+import useWindowSize from '../../../hooks/useWindowSize'
+import { Fragment } from 'react/jsx-runtime'
+import { DesktopProductCard } from '../components/DesktopProductCard'
 
 export function Cart(){
+  const { products } = useCartStore()
+  const { width } = useWindowSize()
+  const isMobile = width <= 768
+
+  const totalValue = products.reduce(
+    (acc, current) => acc += current.price * current.quantity, 0
+  )
+
+  if (products.length === 0) {
+    return <EmptyState />
+  }
+
   return (
     <S.CartWrapper>
-      <S.CartGrid>
+      <S.CartGrid id="cart-header">
         <span>Produto</span>
         <span>QTD</span>
         <span>Subtotal</span>
         <span></span>
       </S.CartGrid>
 
-      <S.CartGrid>
-        <S.Product>
-          <img src="https://wefit-react-web-test.s3.amazonaws.com/viuva-negra.png" alt="" />
-          <div>
-            <p>Homem aranha</p>
-            <p>R$ 29,99</p>
-          </div>
-        </S.Product>
-        <S.Quantity>
-          <p> - 1 + </p>
-        </S.Quantity>
-        <S.Subtotal>
-          R$ 29.99
-        </S.Subtotal>
-        <S.Remove>
-          <Trash color='#009EDD' />
-        </S.Remove>
-      </S.CartGrid>
+      {products.map((item) => (
+        <Fragment key={item.id}>
+          {!isMobile ? (
+            <S.CartGrid>
+              <DesktopProductCard item={item} />
+            </S.CartGrid>
+          ) : (
+            <h1>oi</h1>
+          )}
+        </Fragment>
+      ))}
 
       <S.Separator />
 
       <S.Footer>
-        <Button uppercase>
+        <S.StyledFinishOrderButton uppercase>
           Finalizar pedido
-        </Button>
+        </S.StyledFinishOrderButton>
 
         <div>
           <span>Total</span>
-          <span>R$ 29,90</span>
+          <span>{formatMoney(totalValue)}</span>
         </div>
       </S.Footer>
     </S.CartWrapper>

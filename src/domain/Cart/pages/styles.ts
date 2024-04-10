@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../../../components/Button";
 
 export const CartWrapper = styled.div`
   padding: 24px;
@@ -8,52 +9,18 @@ export const CartWrapper = styled.div`
   gap: 24px;
 
   background-color: white;
+
+  @media (max-width: 768px) {
+    #cart-header {
+      display: none;
+    }
+  }
 `
 
 export const CartGrid = styled.div`
   display: grid;
   grid-template-columns: 2fr 1.5fr 1fr 1fr;
-`
 
-export const Product = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-
-  img {
-    max-width: 90px;
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    p {
-      font-weight: 700;
-      font-size: 16px;
-    }
-  }
-`
-
-export const Quantity = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-export const Subtotal = styled.p`
-  display: flex;
-  align-items: center;
-
-  font-weight: 700;
-  font-size: 16px;
-`
-
-export const Remove = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: end;
 `
 
 export const Separator = styled.hr`
@@ -66,6 +33,7 @@ export const Footer = styled.footer`
   justify-content: space-between;
 
   div {
+    order: 0;
     display: flex;
     align-items: center;
     gap: 24px;
@@ -82,4 +50,25 @@ export const Footer = styled.footer`
       color: #2F2E41;
     }
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 16px;
+
+    button {
+      order: 1;
+      width: 100%;
+    }
+
+    div {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+`
+
+export const StyledFinishOrderButton = styled(Button)`
+  padding: 14px 48px;
 `

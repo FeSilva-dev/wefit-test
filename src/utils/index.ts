@@ -7,3 +7,9 @@ export function standardizeText(text: string) {
     .replace(/\s/g, '')
     .toLowerCase()
 }
+
+export function formatMoney(money: number) {
+  return money.toLocaleString('pt-br', {
+    style: 'currency', currency: 'BRL'
+  })
+}

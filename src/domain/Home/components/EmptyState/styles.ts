@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../../../../components/Button";
 
 export const EmptyWrapper = styled.div`
   display: flex;
@@ -17,4 +18,8 @@ export const EmptyWrapper = styled.div`
     text-align: center;
     line-height: 27px;
   }
+`
+
+export const StyledEmptyButton = styled(Button)`
+  padding: 12px 48px;
 `
