@@ -1,10 +1,24 @@
 import styled from "styled-components";
 
+export const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+`
+
 export const ListWrapper = styled.div`
   margin: 24px 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
+
+  @media(max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media(max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Card = styled.div`

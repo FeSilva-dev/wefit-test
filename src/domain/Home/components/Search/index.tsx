@@ -1,6 +1,6 @@
 import { Search } from 'lucide-react'
 import * as S from './styles'
-import { useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useParams } from '../../../../hooks/useParams'
 
 export function SearchInput(){
@@ -20,8 +20,13 @@ export function SearchInput(){
     setInputValue(params.get('search-query') ?? '')
   }, [location.search, params])
 
+  function onSubmitForm(event: FormEvent){
+    event.preventDefault()
+    onSearch()
+  }
+
   return (
-    <S.InputWrapper>
+    <S.InputWrapper onSubmit={onSubmitForm}>
       <S.Input
         type="text"
         placeholder="Buscar filme pelo nome"
