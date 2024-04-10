@@ -11,6 +11,7 @@ interface ICartStore {
   addProductToCart: (product: IMovie) => void
   removeProductFromCart: (id: number) => void
   updateProductQuantity: (id: number, quantity: number) => void
+  clear: () => void
 }
 
 export const useCartStore = create<ICartStore>()(
@@ -50,6 +51,7 @@ export const useCartStore = create<ICartStore>()(
         }
         set({ products: updatedProducts })
       },
+      clear: () => set({ products: [] })
     }),
     {
       name: '@wefit-movies',

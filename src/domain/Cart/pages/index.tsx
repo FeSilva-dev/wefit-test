@@ -1,19 +1,15 @@
 import * as S from './styles'
-import { useCartStore } from '../../../stores/cart'
 import { formatMoney } from '../../../utils'
 import { EmptyState } from '../../Home/components/EmptyState'
 import useWindowSize from '../../../hooks/useWindowSize'
 import { Fragment } from 'react/jsx-runtime'
 import { DesktopProductCard } from '../components/DesktopProductCard'
+import { useCart } from '../hooks/useCart'
 
 export function Cart(){
-  const { products } = useCartStore()
+  const { products, totalValue, handleFinishOrder } = useCart()
   const { width } = useWindowSize()
   const isMobile = width <= 768
-
-  const totalValue = products.reduce(
-    (acc, current) => acc += current.price * current.quantity, 0
-  )
 
   if (products.length === 0) {
     return <EmptyState />
@@ -43,7 +39,7 @@ export function Cart(){
       <S.Separator />
 
       <S.Footer>
-        <S.StyledFinishOrderButton uppercase>
+        <S.StyledFinishOrderButton uppercase onClick={handleFinishOrder}>
           Finalizar pedido
         </S.StyledFinishOrderButton>
 
