@@ -1,11 +1,5 @@
 import { api } from "../../../lib/api"
-
-interface IMovie {
-  id: number
-  title: string
-  price: number
-  image: string
-}
+import { IMovie } from "../../../types"
 
 export const HomeService = {
   getMovies: async () => {

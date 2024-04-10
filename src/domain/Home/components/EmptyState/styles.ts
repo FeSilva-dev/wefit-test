@@ -17,14 +17,4 @@ export const EmptyWrapper = styled.div`
     text-align: center;
     line-height: 27px;
   }
-
-  button {
-    border-radius: 4px;
-    padding: 14px 48px;
-    color: white;
-    font-size: 12px;
-    font-weight: 700;
-    color: white;
-    background-color: #009EDD;
-  }
 `
