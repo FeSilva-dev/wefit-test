@@ -6,7 +6,7 @@ Follow the steps below:
 $ npm install
 
 # Start the project
-$ npm start
+$ npm run dev
 ```
 The app will be available for access on your browser at http://127.0.0.1:5173
 
