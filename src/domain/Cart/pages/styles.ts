@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { Button } from "../../../components/Button";
 
 export const CartWrapper = styled.div`
+  margin-bottom: 24px;
   padding: 24px;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 
   background-color: white;
 
@@ -64,6 +65,22 @@ export const Footer = styled.footer`
 
     div {
       justify-content: space-between;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 320px) {
+    flex-direction: column;
+    /* gap: 16px; */
+
+    button {
+      order: 1;
+      width: 100%;
+    }
+
+    div {
+      flex-direction: column;
+      gap: 4px;
       width: 100%;
     }
   }

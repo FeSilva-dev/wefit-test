@@ -1,15 +1,16 @@
-import { MinusCircleIcon, PlusCircleIcon, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import * as S from './styles'
 import { formatMoney } from "../../../../utils";
 import { IProduct, useCartStore } from "../../../../stores/cart";
 import { Fragment } from "react/jsx-runtime";
+import { ProductQuantityControll } from "../ProductQuantityControll";
 
 interface IDesktopProductCardProps {
   item: IProduct
 }
 
 export function DesktopProductCard({ item }: IDesktopProductCardProps) {
-  const { removeProductFromCart, updateProductQuantity } = useCartStore()
+  const { removeProductFromCart } = useCartStore()
 
   return (
     <Fragment>
@@ -20,15 +21,7 @@ export function DesktopProductCard({ item }: IDesktopProductCardProps) {
           <p>{formatMoney(item.price)}</p>
         </div>
       </S.Product>
-      <S.Quantity>
-        <button onClick={() => updateProductQuantity(item.id, item.quantity - 1)}>
-          <MinusCircleIcon />
-        </button>
-        <span>{item.quantity}</span>
-        <button onClick={() => updateProductQuantity(item.id, item.quantity + 1)}>
-          <PlusCircleIcon />
-        </button>
-      </S.Quantity>
+      <ProductQuantityControll id={item.id} quantity={item.quantity} />
       <S.Subtotal>
         {formatMoney(item.price * item.quantity)}
       </S.Subtotal>

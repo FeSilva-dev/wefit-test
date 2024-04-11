@@ -5,6 +5,7 @@ import useWindowSize from '../../../hooks/useWindowSize'
 import { Fragment } from 'react/jsx-runtime'
 import { DesktopProductCard } from '../components/DesktopProductCard'
 import { useCart } from '../hooks/useCart'
+import { MobileProductCard } from '../components/MobileProductCard'
 
 export function Cart(){
   const { products, totalValue, handleFinishOrder } = useCart()
@@ -31,7 +32,7 @@ export function Cart(){
               <DesktopProductCard item={item} />
             </S.CartGrid>
           ) : (
-            <h1>oi</h1>
+            <MobileProductCard item={item} />
           )}
         </Fragment>
       ))}
